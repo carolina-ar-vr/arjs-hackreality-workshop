@@ -1,4 +1,4 @@
-# HackReality AR.js Intro Workshop
+# AR.js Workshop Guide
 
 ### Quick Intro
 My name is Micah Haycraft, [here's my website](https://mhaycraft.dev/), I'm a graduating UNC senior majoring in computer science and a developer for Carolina AR/VR. This past summer I helped lead a team to [build a web AR app for Arts Everywhere](https://artseverywhere.unc.edu/art-walk-on-franklin/), and here I'm going to try and teach you some of what I learned.
@@ -71,8 +71,21 @@ You should see a red and green cube with like this:
 ![](https://i.imgur.com/zJSFGJZ.png)
 
 
+## Further 
 
+let's make these cubes a bit more interesting by showing the entity component / parent child structure at work
 
+inside of <a-box> tags, lets insert another a-frame primitive
+```
+<a-torus-knot 
+    radius='0.26' 
+    radius-tubular='0.05'
+    animation="property: rotation; to:360 0 0; dur: 5000; easing: linear; loop: true">
+</a-torus-knot>
+```
 
+# _ok the workshop starts in like an hour so I'm done updating this. in the words of bill o'reilly we're doing it live._
 
+Topics that we may cover during the workshop depending on time constraints include creating customer markers, using 3d models, adding touch interaction, linking all this stuff to arbitrary javascript with DOM elements like a button, and some useful tools like A-Frame inspector and chrome dev tools with adb.
 
+After the workshop is done I'll upload a more complete version of index.html to this repo for anyone to reference.
