@@ -90,4 +90,9 @@ Topics that we may cover during the workshop depending on time constraints inclu
 
 After the workshop is done I'll upload a more complete version of index.html to this repo for anyone to reference.
 
-[custom marker creation tool here](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html)
+- [custom marker creation tool linked here here](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html)
+
+# Post Workshop Update
+Pretty much covered everything that I wanted. I'm leaving ```index.html``` in its initial state and uploading all the finished code in a file called ```completed.html```
+
+I also recorded the workshop and posted the video to YouTube: [link here](https://youtu.be/3hm2lgH0KW4)
