@@ -1,0 +1,156 @@
+<html>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+
+  <script>
+
+    function myButtonFunction() {
+        let elementGrabbed = document.getElementById("replaceMe");
+
+        let initialState = `
+                          <a-entity
+                          position="0 0 0"
+                          rotation="-90 0 0"
+                          scale="1 1 1"
+                          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/carolina-ar-vr/arjs-hackreality-workshop/main/assets/shiba/scene.gltf"
+                          class="clickable"
+                          gesture-handler
+                          >
+                          </a-entity>
+                          `
+
+        let replacement = `                
+                          <a-box position='0 0.5 0' 
+                          material='opacity: 0.5; side: double;color:red;'
+                          >
+
+                          </a-box>
+                          `
+
+        if(elementGrabbed.classList.contains('default')){
+            elementGrabbed.classList.remove('default')
+            elementGrabbed.innerHTML = replacement;
+          }else{
+            elementGrabbed.classList.add('default')
+            elementGrabbed.innerHTML = initialState;
+          }
+    };
+
+    AFRAME.registerComponent('cursor-listener', {
+      init: function () {
+        var COLORS = ['red', 'yellow', 'green'];
+        this.el.addEventListener('click', function (evt) {
+          var randomIndex = Math.floor(Math.random() * COLORS.length);
+          this.setAttribute('material', 'color', COLORS[randomIndex]);
+          console.log('I was clicked at: ', evt.detail.intersection.point);
+        });
+      }
+    });
+
+  </script>
+
+  <style>
+    .buttons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      
+    }
+
+    .my-button {
+      opacity: 0.7;
+      font-size: 18px;
+      padding: 0.55em;
+      border-radius: 4px;
+      border: none;
+      background: rgba(255, 255, 255, 0.993);
+      color: rgb(0, 0, 0);
+      margin: 10px;
+      -webkit-appearance: none;
+    }
+  
+  </style>
+
+  <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+    <div id="main">
+
+          <div class="buttons">
+            <button class="my-button" onclick="myButtonFunction()">click me!</button>
+          </div>
+      
+            <a-scene
+            renderer="logarithmicDepthBuffer: true;"
+            gesture-detector
+            id="scene"
+            vr-mode-ui="enabled: false;" 
+            embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+      
+              <!-- handle hiro marker -->
+              <a-marker 
+              preset='hiro'
+              smooth="true"
+              >
+                <a-box position='0 0.5 0' 
+                material='opacity: 0.5; side: double;color:red;'
+                >
+
+                </a-box>
+              </a-marker>
+          
+              <!-- handle kanji marker -->
+              <a-marker 
+              preset='kanji'
+              smooth="true"
+              >
+                <a-box position='0 0.5 0' 
+                material='opacity: 0.5; side: double;color:red;'
+                cursor-listener
+                emitevents="true" 
+                cursor="rayOrigin: mouse"
+                >
+                    <a-torus-knot 
+                        radius='0.26' 
+                        radius-tubular='0.05'
+                        animation="property: rotation; to:360 0 0; dur: 5000; easing: linear; loop: true"
+                    >
+                    </a-torus-knot>
+                </a-box>
+              </a-marker>
+
+                      <!-- handle custom marker1 (CARVR) -->
+                      <a-marker 
+                      type='pattern' 
+                      url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/carolina-ar-vr/arjs-hackreality-workshop/main/assets/pattern-carvrtext.patt'
+                      smooth="true"
+                      class="default"
+                      id="replaceMe"
+                      >
+                        <a-entity
+                        position="0 0 0"
+                        rotation="-90 0 0"
+                        scale="1 1 1"
+                        gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/carolina-ar-vr/arjs-hackreality-workshop/main/assets/shiba/scene.gltf"
+                        class="clickable"
+                        gesture-handler
+                        >
+                        </a-entity>
+                      </a-marker>
+      
+              <!-- add a simple camera -->
+              <a-entity camera></a-entity>
+            </a-scene>
+
+    </div>
+
+  </body>
+</html>
