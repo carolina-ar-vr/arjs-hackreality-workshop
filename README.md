@@ -89,3 +89,5 @@ inside of <a-box> tags, lets insert another a-frame primitive
 Topics that we may cover during the workshop depending on time constraints include creating customer markers, using 3d models, adding touch interaction, linking all this stuff to arbitrary javascript with DOM elements like a button, and some useful tools like A-Frame inspector and chrome dev tools with adb.
 
 After the workshop is done I'll upload a more complete version of index.html to this repo for anyone to reference.
+
+[custom marker creation tool here](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html)
