@@ -1,0 +1,23 @@
+{
+  "name": "hackreality-arjs-workshop",
+  "version": "1.0.0",
+  "description": "Be on the lookout for resources & guides in this repository leading up to the workshop on Saturday March 13th at 2pm",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolina-ar-vr/arjs-hackreality-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carolina-ar-vr/arjs-hackreality-workshop/issues"
+  },
+  "homepage": "https://github.com/carolina-ar-vr/arjs-hackreality-workshop#readme"
+}
