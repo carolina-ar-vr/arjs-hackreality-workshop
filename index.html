@@ -2,6 +2,7 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script> -->
 
 
   <script>
@@ -9,6 +10,17 @@
     function myButtonFunction() {
         // add button code here!
     };
+
+    // AFRAME.registerComponent('cursor-listener', {
+    //   init: function () {
+    //     var COLORS = ['red', 'yellow', 'green'];
+    //     this.el.addEventListener('click', function (evt) {
+    //       var randomIndex = Math.floor(Math.random() * COLORS.length);
+    //       this.setAttribute('material', 'color', COLORS[randomIndex]);
+    //       console.log('I was clicked at: ', evt.detail.intersection.point);
+    //     });
+    //   }
+    // });
 
   </script>
 
@@ -42,11 +54,11 @@
 
   <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 
-    <div id="main" class="default">
+    <div id="main">
 
-        <div class="buttons">
+          <!-- <div class="buttons">
             <button class="my-button" onclick="myButtonFunction()">click me!</button>
-          </div>
+          </div> -->
       
             <a-scene
             renderer="logarithmicDepthBuffer: true;"
@@ -56,33 +68,35 @@
             embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
       
               <!-- handle hiro marker -->
-              <a-marker preset='hiro'
+              <a-marker 
+              preset='hiro'
               smooth="true"
-              registerevents
               >
-                <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;'>
+                <a-box position='0 0.5 0' 
+                material='opacity: 0.5; side: double;color:red;'
+                >
 
                 </a-box>
               </a-marker>
           
               <!-- handle kanji marker -->
-              <a-marker preset='kanji'
-              smooth="true"
-              registerevents
-              >
-
-              </a-marker>
-
-              <!-- handle custom marker1 (CARVR) -->
               <a-marker 
-              type='pattern' 
-              url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/carolina-ar-vr/arjs-hackreality-workshop/main/assets/pattern-xrmarker.patt'
+              preset='kanji'
               smooth="true"
               >
-                <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:green;'>
-
+                <a-box position='0 0.5 0' 
+                material='opacity: 0.5; side: double;color:red;'
+                >
+                    <a-torus-knot 
+                        radius='0.26' 
+                        radius-tubular='0.05'
+                        animation="property: rotation; to:360 0 0; dur: 5000; easing: linear; loop: true"
+                    >
+                    </a-torus-knot>
                 </a-box>
               </a-marker>
+
+
       
               <!-- add a simple camera -->
               <a-entity camera></a-entity>
